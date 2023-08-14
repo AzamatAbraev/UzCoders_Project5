@@ -1,0 +1,152 @@
+@use "../global";
+@use "../utils/variables" as vrb;
+
+header {
+  background-color: vrb.$primary-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav {
+  &__container {
+    height: vrb.$header-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__link {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    opacity: 0.6;
+    transition: 0.5s ease-in-out;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 3px solid transparent;
+    &__clone {
+      p {
+        color: #ffd3af;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: #ffd3af;
+    }
+    &:hover {
+      opacity: 1;
+      color: #fff;
+      border-top: 3px solid #ffa155;
+    }
+  }
+}
+
+.res-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  .res-nav-link {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    line-height: 24px;
+    border-bottom: 2px solid transparent;
+    opacity: 0.6;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      color: #fff;
+      opacity: 1;
+      border-bottom: 2px solid #ffa155;
+    }
+  }
+
+  .res-nav-clone {
+    display: flex;
+    gap: 8px;
+    p {
+      color: #ffd3af;
+      &:hover {
+        color: #ffa155;
+      }
+    }
+  }
+
+  .res-nav-item {
+    text-align: center;
+  }
+}
+
+.hamburger__btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+}
+
+.hamburger {
+  display: none;
+  &__btn {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+#navbar-responsive {
+  position: fixed;
+  background-color: vrb.$primary-color;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  width: 100%;
+  top: vrb.$header-height;
+  right: -100%;
+  transition: 0.5s;
+  z-index: 1000;
+  display: none;
+  transition: 1s;
+  #navbar-close {
+    position: absolute;
+    top: -58px;
+    right: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 880px) {
+  .nav__menu {
+    display: none;
+  }
+  .hamburger {
+    display: inline-block;
+  }
+
+  #navbar-responsive {
+    display: flex;
+  }
+}
